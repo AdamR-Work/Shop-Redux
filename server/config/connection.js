@@ -1,10 +1,10 @@
 const mongoose = require('mongoose');
 
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/Shop-Redux', {
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/shop-redux', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useCreateIndex: true,
   useFindAndModify: false
-});
+}).catch(error => console.log(error));;
 
 module.exports = mongoose.connection;
