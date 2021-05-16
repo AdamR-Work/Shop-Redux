@@ -2,16 +2,20 @@ import React, { useEffect } from 'react';
 import { UPDATE_CATEGORIES, UPDATE_CURRENT_CATEGORY } from '../../utils/actions';
 import { useQuery } from '@apollo/react-hooks';
 import { QUERY_CATEGORIES } from "../../utils/queries";
-import { useStoreContext } from "../../utils/GlobalState";
+// import { useStoreContext } from "../../utils/GlobalState";
 import { idbPromise } from '../../utils/helpers';
+import { useSelector, useDispatch } from 'react-redux';
 
 function CategoryMenu() {
+  //v1
   // const { data: categoryData } = useQuery(QUERY_CATEGORIES);
   // const categories = categoryData?.categories || [];
-  const [state, dispatch] = useStoreContext();
-
-  const { categories } = state;
-  
+  //v2
+  // const [state, dispatch] = useStoreContext();
+  // const { categories } = state;
+  //v3
+  const categories = useSelector(state => state.categories);
+  const dispatch = useDispatch();
   const { loading, data: categoryData } = useQuery(QUERY_CATEGORIES);
 
 //  USEEFFECT BEFORE PWA

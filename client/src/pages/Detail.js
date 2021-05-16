@@ -12,6 +12,7 @@ import {
   UPDATE_PRODUCTS,
 } from '../utils/actions';
 import { idbPromise } from "../utils/helpers";
+import { useSelector, useDispatch } from 'react-redux';
 
 function Detail() {
   // const { id } = useParams();
@@ -27,7 +28,14 @@ function Detail() {
   //     setCurrentProduct(products.find(product => product._id === id));
   //   }
   // }, [products, id]);
-  const [state, dispatch] = useStoreContext();
+
+  // old way
+  // const [state, dispatch] = useStoreContext();
+
+  // REdux way
+  const state = useSelector(state => state);
+  const dispatch = useDispatch();
+  // 
   const { id } = useParams();
   
   const [currentProduct, setCurrentProduct] = useState({})

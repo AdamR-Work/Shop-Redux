@@ -4,9 +4,10 @@ import { useQuery } from '@apollo/react-hooks';
 import ProductItem from "../ProductItem";
 import { QUERY_PRODUCTS } from "../../utils/queries";
 import spinner from "../../assets/spinner.gif"
-import { useStoreContext } from '../../utils/GlobalState';
+// import { useStoreContext } from '../../utils/GlobalState';
 import { UPDATE_PRODUCTS } from '../../utils/actions';
 import { idbPromise } from "../../utils/helpers";
+import { useSelector, useDispatch } from 'react-redux';
 
 
 function ProductList() {
@@ -21,9 +22,13 @@ function ProductList() {
 
   //   return products.filter(product => product.category._id === currentCategory);
   // }
-  const [state, dispatch] = useStoreContext();
-
-const { currentCategory } = state;
+  //
+  // OLD WAY
+  //const [state, dispatch] = useStoreContext();
+  // REDUX WAY 
+  const state = useSelector(state => state);
+  const dispatch = useDispatch();
+  const { currentCategory } = state;
 
 const { loading, data } = useQuery(QUERY_PRODUCTS);
 

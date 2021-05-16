@@ -1,4 +1,4 @@
-import { useReducer } from "react";
+// import { useReducer } from "react"; // no longer used for REDUX
 import {
   UPDATE_PRODUCTS,
   ADD_TO_CART,
@@ -10,8 +10,16 @@ import {
   CLEAR_CART,
   TOGGLE_CART
 } from "./actions";
-
-export const reducer = (state, action) => {
+// For redux we move the state here from GlobalState.js
+const initialState = {
+  products: [],
+  cart: [],
+  cartOpen: false,
+  categories: [],
+  currentCategory: ''
+}
+// change the state to reflex the initial state and changes initialstate to = state, so that we dont have to change all the wording
+const reducer = (state = initialState, action) => {
   switch (action.type) {
     case UPDATE_PRODUCTS:
       return {
@@ -85,6 +93,9 @@ export const reducer = (state, action) => {
   }
 };
 
-export function useProductReducer(initialState) {
-  return useReducer(reducer, initialState)
-}
+export default reducer; // need to export for REDUX
+
+// old way
+// export function useProductReducer(initialState) {
+//   return useReducer(reducer, initialState)
+// }
