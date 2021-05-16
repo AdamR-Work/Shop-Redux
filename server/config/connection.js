@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 //test
-//test
+
 mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/shop-redux', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
