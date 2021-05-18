@@ -1,1 +1,1 @@
-web:node server/seed.js
+web:node server/seeds.js
